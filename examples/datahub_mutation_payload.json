@@ -1,0 +1,9 @@
+{
+  "entityUrn": "urn:li:dataset:(urn:li:dataPlatform:postgres,analytics.users,PROD)",
+  "aspectName": "globalTags",
+  "tags": [
+    "PII-Sensitive",
+    "GDPR-Restricted"
+  ],
+  "status": "EMITTED"
+}
