@@ -186,3 +186,21 @@ st.markdown("""
     }
     </style>
     """, unsafe_allow_html=True)
+
+st.markdown("""
+    <style>
+    /* Force Streamlit running indicator/status widget and toolbar to remain permanently visible and static */
+    header [data-testid="stStatusWidget"], header [data-testid="stToolbar"], [data-testid="stHeader"] {
+        visibility: visible !important;
+        opacity: 1 !important;
+        display: flex !important;
+        pointer-events: auto !important;
+    }
+    header [data-testid="stStatusWidget"] *, header [data-testid="stToolbar"] * {
+        visibility: visible !important;
+        opacity: 1 !important;
+        color: #111111 !important;
+        fill: #111111 !important;
+    }
+    </style>
+    """, unsafe_allow_html=True)
