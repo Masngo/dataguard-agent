@@ -204,3 +204,24 @@ st.markdown("""
     }
     </style>
     """, unsafe_allow_html=True)
+
+st.markdown("""
+    <style>
+    /* Force the Streamlit running man / status widget to remain visible and static at all times */
+    div[data-testid="stStatusWidget"] {
+        display: flex !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        position: absolute !important;
+        right: 90px !important;
+        top: 10px !important;
+        z-index: 999999 !important;
+    }
+    div[data-testid="stStatusWidget"] svg {
+        fill: #111111 !important;
+        color: #111111 !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+    }
+    </style>
+    """, unsafe_allow_html=True)
