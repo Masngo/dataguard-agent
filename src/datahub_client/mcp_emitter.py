@@ -15,6 +15,11 @@ class DataHubGraphWriter:
         print("[DataHubGraphWriter] Metadata Change Proposal (MCP) successfully emitted!")
         return True
 
+    def emit_pii_assertion(self, dataset_urn):
+        print(f"[DataHubGraphWriter] Emitting PII Compliance Assertion for dataset: {dataset_urn}")
+        print("[DataHubGraphWriter] Assertion successfully recorded on DataHub Context Graph!")
+        return True
+
     def emit(self, payload):
         print("[DataHubGraphWriter] Emitting Metadata Change Proposal (MCP)...")
         print(f"[DataHubGraphWriter] Payload successfully processed: {payload}")
