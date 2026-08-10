@@ -169,3 +169,20 @@ st.markdown("""
     }
     </style>
     """, unsafe_allow_html=True)
+
+st.markdown("""
+    <style>
+    /* Force the Streamlit status widget / running man / stop button to always be visible and static */
+    [data-testid="stStatusWidget"], header [data-testid="stStatusWidget"], [data-testid="stToolbar"] {
+        display: flex !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+    }
+    [data-testid="stStatusWidget"] svg, [data-testid="stToolbar"] svg {
+        fill: #111111 !important;
+        color: #111111 !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+    }
+    </style>
+    """, unsafe_allow_html=True)
