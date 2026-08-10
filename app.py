@@ -40,7 +40,6 @@ st.markdown("""
     </style>
 """, unsafe_allow_html=True)
 
-# Sidebar with Dropdown Selector matching original design
 st.sidebar.markdown("### 🎛️ Agent Control Panel")
 
 target_urn = st.sidebar.selectbox(
@@ -59,12 +58,15 @@ if st.sidebar.button("🚀 Trigger Agent Execution", use_container_width=True):
         try:
             env = os.environ.copy()
             env["PYTHONPATH"] = "."
+            env["PYTHONIOENCODING"] = "utf-8"  # Enforces UTF-8 output on Windows
 
             process = subprocess.Popen(
                 ["python", "src/agent/runner.py"],
                 stdout=subprocess.PIPE,
                 stderr=subprocess.STDOUT,
                 text=True,
+                encoding="utf-8",             # Reads stream as UTF-8
+                errors="replace",             # Prevents encoding crashes
                 bufsize=1,
                 env=env
             )
