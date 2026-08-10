@@ -128,3 +128,15 @@ with tab4:
 DataGuard Agent pipeline execution complete!""",
         height=200
     )
+
+st.markdown("""
+    <style>
+    /* Force deploy button and toolbar menu to be fully opaque and high contrast */
+    [data-testid="stToolbar"], [data-testid="stToolbar"] * {
+        opacity: 1 !important;
+        visibility: visible !important;
+        color: #111111 !important;
+        -webkit-text-fill-color: #111111 !important;
+    }
+    </style>
+    """, unsafe_allow_html=True)
