@@ -1,9 +1,9 @@
 import streamlit as st
 import subprocess
+import os
 
 st.set_page_config(page_title="DataGuard: Autonomous PII Governance Agent", layout="wide")
 
-# Theme-aware styling to support light/dark mode without broken UI blocks
 st.markdown("""
     <style>
     [data-testid="stToolbar"] {
@@ -28,12 +28,17 @@ log_container = st.sidebar.empty()
 if st.sidebar.button("🚀 Trigger Agent Execution"):
     with st.sidebar.spinner("Executing pipeline..."):
         try:
+            # Pass current environment with PYTHONPATH set to the root folder
+            env = os.environ.copy()
+            env["PYTHONPATH"] = "."
+
             process = subprocess.Popen(
                 ["python", "src/agent/runner.py"],
                 stdout=subprocess.PIPE,
                 stderr=subprocess.STDOUT,
                 text=True,
-                bufsize=1
+                bufsize=1,
+                env=env
             )
             
             full_logs = ""
