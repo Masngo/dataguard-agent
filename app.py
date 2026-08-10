@@ -153,3 +153,19 @@ st.markdown("""
     }
     </style>
     """, unsafe_allow_html=True)
+
+st.markdown("""
+    <style>
+    /* Target Streamlit running/stop icons and buttons explicitly */
+    [data-testid="stToolbar"] svg, header button svg, [data-testid="stStatusWidget"] svg {
+        fill: #111111 !important;
+        color: #111111 !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+    }
+    /* Remove solid black background fill from container divs if present */
+    [data-testid="stToolbar"] div:not([data-baseweb]) {
+        background-color: transparent !important;
+    }
+    </style>
+    """, unsafe_allow_html=True)
