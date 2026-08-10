@@ -2,3 +2,5 @@ acryl-datahub[berlin]>=0.12.0
 mcp-server-datahub>=0.1.0
 pydantic>=2.0.0
 python-dotenv>=1.0.0
+acryl-datahub
+acryl-datahub
