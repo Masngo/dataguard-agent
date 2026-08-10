@@ -140,3 +140,16 @@ st.markdown("""
     }
     </style>
     """, unsafe_allow_html=True)
+
+st.markdown("""
+    <style>
+    /* Force all toolbar buttons, text, and icons to be fully visible and high contrast */
+    [data-testid="stToolbar"], [data-testid="stToolbar"] *, header [data-testid="baseButton-header"], header svg {
+        opacity: 1 !important;
+        visibility: visible !important;
+        color: #111111 !important;
+        fill: #111111 !important;
+        -webkit-text-fill-color: #111111 !important;
+    }
+    </style>
+    """, unsafe_allow_html=True)
