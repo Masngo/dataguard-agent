@@ -1,26 +1,37 @@
-import subprocess
 import streamlit as st
+import subprocess
 
-st.title("DataGuard: Autonomous PII Governance Agent")
+st.set_page_config(page_title="DataGuard: Autonomous PII Governance Agent", layout="wide")
 
-# Inside your sidebar or button handler:
-if st.button("Trigger Agent Execution"):
+st.markdown("""
+    <style>
+    [data-testid="stToolbar"] {
+        opacity: 1 !important;
+        visibility: visible !important;
+    }
+    </style>
+""", unsafe_allow_html=True)
+
+st.sidebar.title("Agent Control Panel")
+dataset_urn = st.sidebar.selectbox(
+    "Target Dataset URN",
+    ["urn:li:dataset:(urn:li:dataPlatform:postgres,public.users,PROD)"]
+)
+
+if st.sidebar.button("Trigger Agent Execution"):
     with st.spinner("Running DataGuard Agent pipeline..."):
         try:
-            # Run your underlying python agent script and capture output
             process = subprocess.Popen(
-                ["python", "agent.py"],
+                ["python", "src/agent/runner.py"],
                 stdout=subprocess.PIPE,
                 stderr=subprocess.STDOUT,
                 text=True,
                 bufsize=1
             )
             
-            # Create an empty container for real-time logs
             log_placeholder = st.empty()
             full_logs = ""
             
-            # Stream the output live to the UI
             for line in process.stdout:
                 full_logs += line
                 log_placeholder.code(full_logs, language="bash")
@@ -30,6 +41,8 @@ if st.button("Trigger Agent Execution"):
                 st.success("Pipeline execution completed successfully!")
             else:
                 st.error("Pipeline execution failed. Check logs above.")
-                
         except Exception as e:
             st.error(f"Failed to execute pipeline: {e}")
+
+st.title("🛡️ DataGuard: Autonomous PII Governance Agent")
+st.subheader("Metadata-Driven Compliance, dbt Code Generation, and Enterprise Graph Remediation")
